@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1 class="display-4 text-center">节点更新页面</h1><br>
+    <form action="get_url" method="POST">
+        订阅地址或者clash配置地址:
+        <input type="text" class="form-control" name="url">
+        <button class="btn btn-outline-secondary" type="submit">提交</button>
+        <br>
+        <input type="radio" name="ghproxy" value="false" id="no-ghproxy" checked>
+        <label class="form-check-label" for="no-ghproxy">
+            直连链接
+        </label>
+        <br>
+        <input type="radio" name="ghproxy" value="true" id="ghproxy">
+        <label class="form-check-label" for="ghproxy">
+            添加ghproxy代理
+        </label>
+    </form>
+
+    {% if info %}
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">运行信息</h4>
+            <hr>
+            <p>输入地址为：{{ url }}</p>
+            <p>运行信息：{{ output }}</p>
+            <p>已成功检测到节点信息，订阅内容符合规则！原有{{ info.0 }}节点，现有{{ info.1 }}节点，增加{{ info.2 }}节点！</p>
+        </div>
+    {% elif error %}
+        <div class="alert alert-warning" role="alert">
+            <h4 class="alert-heading">警告</h4>
+            <hr>
+            <p>输入地址为：{{ url }}</p>
+            <p>错误信息：{{ error }}</p>
+        </div>
+    {% endif %}
+
+{% endblock %}

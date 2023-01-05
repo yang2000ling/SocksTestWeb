@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>设置</h2>
+    <form class="input-group mb-3" action="config" method="POST">
+        <span class="input-group-text">节点文件路径</span>
+        <input type="text" class="form-control" name="nodes-path" value={{ config.NODES_PATH }}>
+        <span class="input-group-text">订阅输出文件路径</span>
+        <input type="text" class="form-control" name="output-path" value={{ config.OUTPUT_PATH }}>
+        <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            保存设置
+        </button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">提示</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        是否确定保存设置？
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+                        <button type="button submit" class="btn btn-primary">保存设置</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+{% endblock %}
